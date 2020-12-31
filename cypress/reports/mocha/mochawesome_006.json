@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2020-12-30T17:21:52.847Z",
-    "end": "2020-12-30T17:22:02.093Z",
-    "duration": 9246,
+    "start": "2020-12-30T17:23:15.623Z",
+    "end": "2020-12-30T17:23:20.344Z",
+    "duration": 4721,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,16 +18,16 @@
   },
   "results": [
     {
-      "uuid": "cedc3c9b-5f86-460e-abe7-378797d3e6fb",
+      "uuid": "b7d51281-bcb5-4530-83eb-ecd03ff66950",
       "title": "",
-      "fullFile": "cypress\\integration\\Login.feature",
-      "file": "cypress\\integration\\Login.feature",
+      "fullFile": "cypress\\integration\\QAM\\fixtureFiles.spec.js",
+      "file": "cypress\\integration\\QAM\\fixtureFiles.spec.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "6f9b0537-1c6a-443c-80b2-8d541d7cc136",
+          "uuid": "7270a22e-49b0-45d6-893b-650ba2213053",
           "title": "Login",
           "fullFile": "",
           "file": "",
@@ -35,32 +35,32 @@
           "afterHooks": [],
           "tests": [
             {
-              "title": "Conduit Login",
-              "fullTitle": "Login Conduit Login",
+              "title": "Sign in",
+              "fullTitle": "Login Sign in",
               "timedOut": null,
-              "duration": 9012,
+              "duration": 4626,
               "state": "passed",
               "speed": "slow",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach(step =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() =>\n    resolveAndRunAfterHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "code": "cy.visit('https://react-redux.realworld.io/#/login');\ncy.get('input[type=\"email\"]').type(this.user.email);\ncy.get('input[type=\"password\"]').type(this.user.password);\ncy.get('.btn').contains('Sign in').should('be.visible').click();",
               "err": {},
-              "uuid": "30b4a320-5431-460e-a1c3-e5b2182f8622",
-              "parentUUID": "6f9b0537-1c6a-443c-80b2-8d541d7cc136",
+              "uuid": "c543a0f8-9d61-4bc3-92d5-24f0bfa54566",
+              "parentUUID": "7270a22e-49b0-45d6-893b-650ba2213053",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "30b4a320-5431-460e-a1c3-e5b2182f8622"
+            "c543a0f8-9d61-4bc3-92d5-24f0bfa54566"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 9012,
+          "duration": 4626,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

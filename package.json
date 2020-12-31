@@ -1,10 +1,10 @@
 {
-  "name": "QAMdemo",
+  "name": "CypressFramework",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean:reports": "rm -R -f cypress/reports && mkdir cypress/reports && mkdir cypress/reports/mochareports",
+    "clean:reports": "rmdir /S /Q cypress\\reports && mkdir cypress\\reports && mkdir cypress\\reports\\mochareports",
     "pretest": "npm run clean:reports",
     "scripts": "cypress run",
     "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",
@@ -13,10 +13,11 @@
     "test": "npm run scripts || npm run posttest"
   },
   "keywords": [],
-  "author": "",
+  "author": "Javeria Ashraf",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^3.4.1"
+    "cypress": "^3.4.1",
+    "cypress-testrail-reporter": "^1.2.3"
   },
   "devDependencies": {
     "cypress-cucumber-preprocessor": "^2.0.1",

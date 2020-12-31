@@ -1,15 +1,15 @@
 {
   "stats": {
-    "suites": 1,
-    "tests": 1,
-    "passes": 0,
+    "suites": 8,
+    "tests": 11,
+    "passes": 7,
     "pending": 0,
-    "failures": 1,
-    "start": "2020-02-08T04:51:56.738Z",
-    "end": "2020-02-08T04:51:56.738Z",
-    "duration": 30468,
-    "testsRegistered": 1,
-    "passPercent": 0,
+    "failures": 4,
+    "start": "2020-12-30T17:21:52.847Z",
+    "end": "2020-12-30T17:23:44.903Z",
+    "duration": 54214,
+    "testsRegistered": 11,
+    "passPercent": 63.63636363636363,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,16 +18,478 @@
   },
   "results": [
     {
-      "uuid": "467e5635-8fb8-4e5a-aa5a-44847ae2b9e6",
+      "uuid": "c185d819-c19d-4985-879a-45cf10884e84",
       "title": "",
-      "fullFile": "",
-      "file": "",
+      "fullFile": "cypress\\integration\\Login\\login.js",
+      "file": "cypress\\integration\\Login\\login.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [
+        {
+          "title": "An uncaught error was detected outside of a test",
+          "fullTitle": " An uncaught error was detected outside of a test",
+          "timedOut": null,
+          "duration": 609,
+          "state": "failed",
+          "speed": null,
+          "pass": false,
+          "fail": true,
+          "pending": false,
+          "context": null,
+          "code": "throw err;",
+          "err": {
+            "message": "Uncaught ReferenceError: Given is not defined\n\nThis error originated from your test code, not from Cypress.\n\nWhen Cypress detects uncaught errors originating from your test code it will automatically fail the current test.\n\nCypress could not associate this error to any specific test.\n\nWe dynamically generated a new test to display this failure.",
+            "estack": "Uncaught ReferenceError: Given is not defined\n\nThis error originated from your test code, not from Cypress.\n\nWhen Cypress detects uncaught errors originating from your test code it will automatically fail the current test.\n\nCypress could not associate this error to any specific test.\n\nWe dynamically generated a new test to display this failure.\n    at Object.1 (https://react-redux.realworld.io/__cypress/tests?p=cypress\\integration\\Login\\login.js-572:4:1)\n    at o (https://react-redux.realworld.io/__cypress/tests?p=cypress\\integration\\Login\\login.js-572:1:265)\n    at r (https://react-redux.realworld.io/__cypress/tests?p=cypress\\integration\\Login\\login.js-572:1:431)\n    at https://react-redux.realworld.io/__cypress/tests?p=cypress\\integration\\Login\\login.js-572:1:460",
+            "diff": null
+          },
+          "uuid": "6257ec85-2364-4ff6-8e55-9379fb02f176",
+          "parentUUID": "c185d819-c19d-4985-879a-45cf10884e84",
+          "isHook": false,
+          "skipped": false
+        }
+      ],
+      "suites": [],
+      "passes": [],
+      "failures": [
+        "6257ec85-2364-4ff6-8e55-9379fb02f176"
+      ],
+      "pending": [],
+      "skipped": [],
+      "duration": 609,
+      "root": true,
+      "rootEmpty": false,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "e47412df-b80a-4f07-a4f6-7ea8b5d79672",
+      "title": "",
+      "fullFile": "cypress\\integration\\QAM\\api.spec.js",
+      "file": "cypress\\integration\\QAM\\api.spec.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "770a48f0-019e-4ada-be02-80423c6da363",
+          "uuid": "5b1e1de4-4876-4c57-a37a-88658f98d4dc",
+          "title": "API Testing",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "GET - read",
+              "fullTitle": "API Testing GET - read",
+              "timedOut": null,
+              "duration": 1694,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('/employees').then(function (response) {\n  expect(response).to.have.property('status', 200);\n  expect(response.body).to.not.be[\"null\"];\n  expect(response.body.data).to.have.length(24);\n});",
+              "err": {},
+              "uuid": "763807a5-14e7-42ca-97d6-42244e58fab5",
+              "parentUUID": "5b1e1de4-4876-4c57-a37a-88658f98d4dc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "POST - create",
+              "fullTitle": "API Testing POST - create",
+              "timedOut": null,
+              "duration": 1679,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "var item = {\n  \"name\": \"test\",\n  \"salary\": \"123\",\n  \"age\": \"23\"\n};\ncy.request('POST', '/create', item).its('body').its('data') // .should('deep.eq', item)\n.should('include', {\n  name: 'test'\n});",
+              "err": {
+                "message": "CypressError: cy.request() failed on:\n\nhttp://dummy.restapiexample.com/api/v1/create\n\nThe response we received from your web server was:\n\n  > 429: Too Many Requests\n\nThis was considered a failure because the status code was not '2xx' or '3xx'.\n\nIf you do not want status codes to cause failures pass the option: 'failOnStatusCode: false'\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://dummy.restapiexample.com/api/v1/create\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/3.8.3 Chrome/78.0.3904.130 Electron/7.1.10 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 41\n}\nBody: {\"name\":\"test\",\"salary\":\"123\",\"age\":\"23\"}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 429 - Too Many Requests\nHeaders: {\n  \"content-encoding\": \"gzip\",\n  \"content-type\": \"text/html; charset=UTF-8\",\n  \"date\": \"Wed, 30 Dec 2020 17:22:25 GMT\",\n  \"display\": \"staticcontent_sol\",\n  \"expires\": \"Tue, 29 Dec 2020 17:22:25 GMT\",\n  \"host-header\": \"c2hhcmVkLmJsdWVob3N0LmNvbQ==\",\n  \"pagespeed\": \"off\",\n  \"referrer-policy\": \"\",\n  \"response\": \"429\",\n  \"retry-after\": \"43\",\n  \"server\": \"nginx/1.16.0\",\n  \"vary\": \"Accept-Encoding, Accept-Encoding,Origin\",\n  \"x-ezoic-cdn\": \"Miss\",\n  \"x-middleton-display\": \"staticcontent_sol\",\n  \"x-middleton-response\": \"429\",\n  \"x-ratelimit-limit\": \"60\",\n  \"x-ratelimit-remaining\": \"55\",\n  \"x-ratelimit-reset\": \"1609348988\",\n  \"x-sol\": \"pub_site\",\n  \"transfer-encoding\": \"chunked\"\n}\nBody: <!DOCTYPE html>\n<html lang=\"en\">\n    <head><meta charset=\"utf-8\">\n<script data-ezscrex='false' data-cfasync='false' data-pagespeed-no-defer>var __ez=__ez||{};__ez.stms=Date.now();__ez.evt={};__ez.script={};__ez.ck=__ez.ck||{};__ez.template={};__ez.template.isOrig=false;__ez.queue=(function(){var count=0,incr=0,items=[],timeDelayFired=false,hpItems=[],lpItems=[],allowLoad=true;var obj={func:function(name,funcName,parameters,isBlock,blockedBy,deleteWhenComplete,proceedIfError){var self=this;this.name=name;this.funcName=funcName;this.parameters=parameters===null?null:(parameters instanceof Array)?parameters:[parameters];this.isBlock=isBlock;this.blockedBy=blockedBy;this.deleteWhenComplete=deleteWhenComplete;this.isError=false;this.isComplete=false;this.isInitialized=false;this.proceedIfError=proceedIfError;this.isTimeDelay=false;this.process=function(){log(\"... func = \"+name);self.isInitialized=true;self.isComplete=true;log(\"... func.apply: \"+name);var funcs=self.funcName.split('.');var func=null;if(funcs.length>3){}else if(funcs.length===3){func=window[funcs[0]][funcs[1]][funcs[2]];}else if(funcs.length===2){func=window[funcs[0]][funcs[1]];}else{func=window[self.funcName];}\nif(typeof func!=='undefined'&&func!==null){func.apply(null,this.parameters);}\nif(self.deleteWhenComplete===true)delete items[name];if(self.isBlock===true){log(\"----- F'D: \"+self.name);processAll();}}},file:function(name,path,isBlock,blockedBy,async,defer,proceedIfError){var self=this;this.name=name;this.path=path;this.async=async;this.defer=defer;this.isBlock=isBlock;this.blockedBy=blockedBy;this.isInitialized=false;this.isError=false;this.isComplete=false;this.proceedIfError=proceedIfError;this.isTimeDelay=false;this.process=function(){self.isInitialized=true;log(\"... file = \"+name);var scr=document.createElement('script');scr.src=path;if(async===true)scr.async=true;else if(defer===true)scr.defer=true;scr.onerror=function(){log(\"----- ERR'D: \"+self.name);self.isError=true;if(self.isBlock===true...\n",
+                "estack": "CypressError: cy.request() failed on:\n\nhttp://dummy.restapiexample.com/api/v1/create\n\nThe response we received from your web server was:\n\n  > 429: Too Many Requests\n\nThis was considered a failure because the status code was not '2xx' or '3xx'.\n\nIf you do not want status codes to cause failures pass the option: 'failOnStatusCode: false'\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: http://dummy.restapiexample.com/api/v1/create\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/3.8.3 Chrome/78.0.3904.130 Electron/7.1.10 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 41\n}\nBody: {\"name\":\"test\",\"salary\":\"123\",\"age\":\"23\"}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 429 - Too Many Requests\nHeaders: {\n  \"content-encoding\": \"gzip\",\n  \"content-type\": \"text/html; charset=UTF-8\",\n  \"date\": \"Wed, 30 Dec 2020 17:22:25 GMT\",\n  \"display\": \"staticcontent_sol\",\n  \"expires\": \"Tue, 29 Dec 2020 17:22:25 GMT\",\n  \"host-header\": \"c2hhcmVkLmJsdWVob3N0LmNvbQ==\",\n  \"pagespeed\": \"off\",\n  \"referrer-policy\": \"\",\n  \"response\": \"429\",\n  \"retry-after\": \"43\",\n  \"server\": \"nginx/1.16.0\",\n  \"vary\": \"Accept-Encoding, Accept-Encoding,Origin\",\n  \"x-ezoic-cdn\": \"Miss\",\n  \"x-middleton-display\": \"staticcontent_sol\",\n  \"x-middleton-response\": \"429\",\n  \"x-ratelimit-limit\": \"60\",\n  \"x-ratelimit-remaining\": \"55\",\n  \"x-ratelimit-reset\": \"1609348988\",\n  \"x-sol\": \"pub_site\",\n  \"transfer-encoding\": \"chunked\"\n}\nBody: <!DOCTYPE html>\n<html lang=\"en\">\n    <head><meta charset=\"utf-8\">\n<script data-ezscrex='false' data-cfasync='false' data-pagespeed-no-defer>var __ez=__ez||{};__ez.stms=Date.now();__ez.evt={};__ez.script={};__ez.ck=__ez.ck||{};__ez.template={};__ez.template.isOrig=false;__ez.queue=(function(){var count=0,incr=0,items=[],timeDelayFired=false,hpItems=[],lpItems=[],allowLoad=true;var obj={func:function(name,funcName,parameters,isBlock,blockedBy,deleteWhenComplete,proceedIfError){var self=this;this.name=name;this.funcName=funcName;this.parameters=parameters===null?null:(parameters instanceof Array)?parameters:[parameters];this.isBlock=isBlock;this.blockedBy=blockedBy;this.deleteWhenComplete=deleteWhenComplete;this.isError=false;this.isComplete=false;this.isInitialized=false;this.proceedIfError=proceedIfError;this.isTimeDelay=false;this.process=function(){log(\"... func = \"+name);self.isInitialized=true;self.isComplete=true;log(\"... func.apply: \"+name);var funcs=self.funcName.split('.');var func=null;if(funcs.length>3){}else if(funcs.length===3){func=window[funcs[0]][funcs[1]][funcs[2]];}else if(funcs.length===2){func=window[funcs[0]][funcs[1]];}else{func=window[self.funcName];}\nif(typeof func!=='undefined'&&func!==null){func.apply(null,this.parameters);}\nif(self.deleteWhenComplete===true)delete items[name];if(self.isBlock===true){log(\"----- F'D: \"+self.name);processAll();}}},file:function(name,path,isBlock,blockedBy,async,defer,proceedIfError){var self=this;this.name=name;this.path=path;this.async=async;this.defer=defer;this.isBlock=isBlock;this.blockedBy=blockedBy;this.isInitialized=false;this.isError=false;this.isComplete=false;this.proceedIfError=proceedIfError;this.isTimeDelay=false;this.process=function(){self.isInitialized=true;log(\"... file = \"+name);var scr=document.createElement('script');scr.src=path;if(async===true)scr.async=true;else if(defer===true)scr.defer=true;scr.onerror=function(){log(\"----- ERR'D: \"+self.name);self.isError=true;if(self.isBlock===true...\n\n    at Object.cypressErr (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:86207:11)\n    at Object.throwErr (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:86162:18)\n    at Object.throwErrByPath (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:86194:17)\n    at https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:72496:18\n    at tryCatcher (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:120203:23)\n    at Promise._settlePromiseFromHandler (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:118139:31)\n    at Promise._settlePromise (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:118196:18)\n    at Promise._settlePromise0 (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:118241:10)\n    at Promise._settlePromises (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:118320:18)\n    at Async../node_modules/bluebird/js/release/async.js.Async._drainQueue (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:114928:16)\n    at Async../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:114938:10)\n    at Async.drainQueues (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:114812:14)",
+                "diff": null
+              },
+              "uuid": "08e4bf14-2287-456a-bbf4-a50e197f7163",
+              "parentUUID": "5b1e1de4-4876-4c57-a37a-88658f98d4dc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "PUT - update",
+              "fullTitle": "API Testing PUT - update",
+              "timedOut": null,
+              "duration": 5733,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "var item = {\n  \"name\": \"test1\"\n};\ncy.request({\n  method: 'PUT',\n  url: '/update/1',\n  body: item,\n  failOnStatusCode: false\n}).its('status').should('eq', 401);",
+              "err": {
+                "message": "CypressError: Timed out retrying: expected 429 to equal 401",
+                "estack": "CypressError: Timed out retrying: expected 429 to equal 401\n    at Object.cypressErr (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:86207:11)\n    at Object.throwErr (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:86162:18)\n    at Object.throwErrByPath (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:86194:17)\n    at retry (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:76849:16)\n    at onFailFn (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:65634:16)\n    at tryCatcher (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:120203:23)\n    at Promise._settlePromiseFromHandler (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:118139:31)\n    at Promise._settlePromise (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:118196:18)\n    at Promise._settlePromise0 (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:118241:10)\n    at Promise._settlePromises (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:118316:18)\n    at Async../node_modules/bluebird/js/release/async.js.Async._drainQueue (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:114928:16)\n    at Async../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:114938:10)\n    at Async.drainQueues (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:114812:14)",
+                "diff": null
+              },
+              "uuid": "4e108245-bfad-4360-817a-d55358f0c28f",
+              "parentUUID": "5b1e1de4-4876-4c57-a37a-88658f98d4dc",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "763807a5-14e7-42ca-97d6-42244e58fab5"
+          ],
+          "failures": [
+            "08e4bf14-2287-456a-bbf4-a50e197f7163",
+            "4e108245-bfad-4360-817a-d55358f0c28f"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 9106,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "72fd43ae-c852-46e5-bdce-77afcfe767ae",
+      "title": "",
+      "fullFile": "cypress\\integration\\QAM\\basics.spec.js",
+      "file": "cypress\\integration\\QAM\\basics.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d84529e2-10af-4eda-8354-0ff416e25bca",
+          "title": "Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sign in",
+              "fullTitle": "Login Sign in",
+              "timedOut": null,
+              "duration": 5034,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://react-redux.realworld.io/#/login');\ncy.get('input[type=\"email\"]').type('jayash32@gmail.com');\ncy.get('input[type=\"password\"]').type('jayash32');\ncy.get('.btn').contains('Sign in').should('be.visible').click();",
+              "err": {},
+              "uuid": "bf2b352d-4165-404b-ba7d-1ec550e87e7c",
+              "parentUUID": "d84529e2-10af-4eda-8354-0ff416e25bca",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "bf2b352d-4165-404b-ba7d-1ec550e87e7c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5034,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "037dfb4f-5383-416c-af68-3865e7a5dc75",
+      "title": "",
+      "fullFile": "cypress\\integration\\QAM\\customCommand.spec.js",
+      "file": "cypress\\integration\\QAM\\customCommand.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "79e3e7be-5ca1-45ff-b983-91d6028a9129",
+          "title": "Create and mark-unmark as favorite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create a post",
+              "fullTitle": "Create and mark-unmark as favorite Create a post",
+              "timedOut": null,
+              "duration": 8693,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().contains('New Post').click();\ncy.hash().should('include', '#/editor');\ncy.get('form').within(function ($form) {\n  cy.get('input').first().type('Test');\n  cy.get('input').eq(1).type('Test 1');\n  cy.get('textarea').last().type('Test 2');\n  cy.contains('Publish Article').click();\n});\ncy.url().should('include', 'article');",
+              "err": {},
+              "uuid": "966ea90f-931f-40de-9059-f64b148b639d",
+              "parentUUID": "79e3e7be-5ca1-45ff-b983-91d6028a9129",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Mark-unmark as favorite",
+              "fullTitle": "Create and mark-unmark as favorite Mark-unmark as favorite",
+              "timedOut": null,
+              "duration": 9229,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('ul.navbar-nav').children().contains('Javeria').click();\ncy.contains('My Articles').should('be.visible');\ncy.get('.ion-heart').first().click();\ncy.contains('Favorited Articles').click();\ncy.url().should('include', 'favorites');\ncy.get('.ion-heart').first().click();\ncy.reload();\ncy.contains('No articles are here... yet.').should('be.visible');\ncy.go('back');",
+              "err": {
+                "message": "CypressError: Timed out retrying: Expected to find content: 'No articles are here... yet.' but never did.",
+                "estack": "CypressError: Timed out retrying: Expected to find content: 'No articles are here... yet.' but never did.\n    at Object.cypressErr (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:86207:11)\n    at Object.throwErr (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:86162:18)\n    at Object.throwErrByPath (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:86194:17)\n    at retry (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:76849:16)\n    at onFailFn (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:65634:16)\n    at tryCatcher (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:120203:23)\n    at Promise._settlePromiseFromHandler (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:118139:31)\n    at Promise._settlePromise (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:118196:18)\n    at Promise._settlePromise0 (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:118241:10)\n    at Promise._settlePromises (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:118316:18)\n    at Async../node_modules/bluebird/js/release/async.js.Async._drainQueue (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:114928:16)\n    at Async../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:114938:10)\n    at Async.drainQueues (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:114812:14)",
+                "diff": null
+              },
+              "uuid": "c2c1597f-84d5-426d-9e1e-623f11443850",
+              "parentUUID": "79e3e7be-5ca1-45ff-b983-91d6028a9129",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "966ea90f-931f-40de-9059-f64b148b639d"
+          ],
+          "failures": [
+            "c2c1597f-84d5-426d-9e1e-623f11443850"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 17922,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "b7d51281-bcb5-4530-83eb-ecd03ff66950",
+      "title": "",
+      "fullFile": "cypress\\integration\\QAM\\fixtureFiles.spec.js",
+      "file": "cypress\\integration\\QAM\\fixtureFiles.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7270a22e-49b0-45d6-893b-650ba2213053",
+          "title": "Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sign in",
+              "fullTitle": "Login Sign in",
+              "timedOut": null,
+              "duration": 4626,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://react-redux.realworld.io/#/login');\ncy.get('input[type=\"email\"]').type(this.user.email);\ncy.get('input[type=\"password\"]').type(this.user.password);\ncy.get('.btn').contains('Sign in').should('be.visible').click();",
+              "err": {},
+              "uuid": "c543a0f8-9d61-4bc3-92d5-24f0bfa54566",
+              "parentUUID": "7270a22e-49b0-45d6-893b-650ba2213053",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c543a0f8-9d61-4bc3-92d5-24f0bfa54566"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4626,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "46b15d2c-e41f-4e2f-bc43-3f268ad2f08d",
+      "title": "",
+      "fullFile": "cypress\\integration\\QAM\\plugin_uploadFiles.spec.js",
+      "file": "cypress\\integration\\QAM\\plugin_uploadFiles.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "28a3d401-6a8a-4b43-9b58-7422e26f84bf",
+          "title": "Working with plugins",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "File upload",
+              "fullTitle": "Working with plugins File upload",
+              "timedOut": null,
+              "duration": 2813,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://cgi-lib.berkeley.edu/ex/fup.html'); // upload file\nvar fileName = 'SampleFile.pdf';\n/* For cypress-file-upload version < 4.0.0\ncy.fixture(fileName).then(fileContent => {\n    cy.get('[type=\"file\"]').upload({ fileContent, fileName, mimeType: 'application/pdf' });\n})*/\n// For cypress-file-upload version > 4.0.0\ncy.get('[type=\"file\"]').attachFile(fileName);\ncy.get('[type=\"submit\"]').click();\ncy.contains(\"You've uploaded a file.  Your notes on the file were:\");",
+              "err": {},
+              "uuid": "951492f7-48cf-47c8-9ff0-549fa930d9c5",
+              "parentUUID": "28a3d401-6a8a-4b43-9b58-7422e26f84bf",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "951492f7-48cf-47c8-9ff0-549fa930d9c5"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2813,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "359fbda5-1c04-41c0-b60a-1c690629832d",
+      "title": "",
+      "fullFile": "cypress\\integration\\QAM\\pom.spec.js",
+      "file": "cypress\\integration\\QAM\\pom.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "91e10821-cf0d-442f-8234-f0ab0f37c1ea",
+          "title": "Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sign in",
+              "fullTitle": "Login Sign in",
+              "timedOut": null,
+              "duration": 5092,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://react-redux.realworld.io/#/login');\nlogin.email().type('jayash32@gmail.com');\nlogin.password().type('jayash32');\nlogin.signInButton().should('be.visible').click();",
+              "err": {},
+              "uuid": "d396deaa-490e-4ac4-bdd6-bc17a15906e1",
+              "parentUUID": "91e10821-cf0d-442f-8234-f0ab0f37c1ea",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d396deaa-490e-4ac4-bdd6-bc17a15906e1"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5092,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "cedc3c9b-5f86-460e-abe7-378797d3e6fb",
+      "title": "",
+      "fullFile": "cypress\\integration\\Login.feature",
+      "file": "cypress\\integration\\Login.feature",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6f9b0537-1c6a-443c-80b2-8d541d7cc136",
           "title": "Login",
           "fullFile": "",
           "file": "",
@@ -38,33 +500,29 @@
               "title": "Conduit Login",
               "fullTitle": "Login Conduit Login",
               "timedOut": null,
-              "duration": 30468,
-              "state": "failed",
-              "speed": null,
-              "pass": false,
-              "fail": true,
+              "duration": 9012,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
               "pending": false,
               "context": null,
-              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach(step => stepTest.call(this, state, step, rowData))\n  )\n  .then(() =>\n    resolveAndRunAfterHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() => state.onFinishScenario(scenario));",
-              "err": {
-                "message": "CypressError: Timed out retrying: Expected to find content: 'Your Feed' but never did.",
-                "estack": "CypressError: Timed out retrying: Expected to find content: 'Your Feed' but never did.\n    at Object.cypressErr (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:85348:11)\n    at Object.throwErr (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:85303:18)\n    at Object.throwErrByPath (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:85335:17)\n    at retry (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:77321:16)\n    at onFailFn (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:68422:16)\n    at tryCatcher (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:118962:23)\n    at Promise._settlePromiseFromHandler (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:116898:31)\n    at Promise._settlePromise (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:116955:18)\n    at Promise._settlePromise0 (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:117000:10)\n    at Promise._settlePromises (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:117075:18)\n    at Async../node_modules/bluebird/js/release/async.js.Async._drainQueue (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:113687:16)\n    at Async../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:113697:10)\n    at Async.drainQueues (https://react-redux.realworld.io/__cypress/runner/cypress_runner.js:113571:14)\n    at <anonymous>",
-                "diff": null
-              },
-              "uuid": "693bac8a-9788-482d-aa8c-389d3bb0cb9f",
-              "parentUUID": "770a48f0-019e-4ada-be02-80423c6da363",
+              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach(step =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() =>\n    resolveAndRunAfterHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "err": {},
+              "uuid": "30b4a320-5431-460e-a1c3-e5b2182f8622",
+              "parentUUID": "6f9b0537-1c6a-443c-80b2-8d541d7cc136",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [],
-          "failures": [
-            "693bac8a-9788-482d-aa8c-389d3bb0cb9f"
+          "passes": [
+            "30b4a320-5431-460e-a1c3-e5b2182f8622"
           ],
+          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 30468,
+          "duration": 9012,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -82,7 +540,7 @@
   ],
   "meta": {
     "mocha": {
-      "version": "6.2.2"
+      "version": "7.2.0"
     },
     "mochawesome": {
       "options": {
@@ -91,9 +549,10 @@
         "saveHtml": false,
         "saveJson": true,
         "consoleReporter": "spec",
-        "useInlineDiffs": false
+        "useInlineDiffs": false,
+        "code": true
       },
-      "version": "4.1.0"
+      "version": "6.2.1"
     },
     "marge": {
       "options": {
@@ -104,7 +563,7 @@
         "html": false,
         "json": true
       },
-      "version": "4.0.1"
+      "version": "5.1.0"
     }
   }
 }
